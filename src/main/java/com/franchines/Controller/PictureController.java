@@ -39,21 +39,21 @@ public class PictureController {
 	
 	// createPicture
 		@PostMapping("/shops/{id}/pictures")
-		Picture createPicture(@RequestBody Picture newPicture, @PathVariable Long id) throws Exception {
+		Picture createPicture(@RequestBody Picture p, @PathVariable Long id) throws Exception {
 			int nowPicturesInShop = pictureRepository.countPicturesByShop(shopRepository.findShopById(id));
 			int maxPicturesNumberInShop = shopRepository.findShopById(id).getPicturesNumber();
 		
 			if(nowPicturesInShop < maxPicturesNumberInShop) {
-			
-				// El constructor no controla el objecto instanciado???
-				if(newPicture.getPictureAuthor() == null) {
-					newPicture.setPictureAuthor("Anonymous");
+				
+				if(p.getPictureAuthor() == null) {
+					p = new Picture(p.getPictureName(), p.getPrice(), p.getShop());
+				} else {
+					p = new Picture(p.getPictureName(), p.getPictureAuthor(), p.getPrice(), p.getShop());
 				}
 				
-				newPicture.setShop(shopRepository.findShopById(id));
-				newPicture.setDateReg(new Date());
-				//pictureRepository.createPicture(newPicture, shopRepository.findShopById(id));
-				return pictureRepository.save(newPicture);
+				p.setShop(shopRepository.findShopById(id));
+				p.setDateReg(new Date());
+				return pictureRepository.save(p);
 			} else {
 				 throw new CustomException("Exceede pictures number.");
 			}
