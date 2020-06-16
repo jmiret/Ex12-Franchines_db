@@ -1,5 +1,11 @@
 package com.franchines.Controller;
 
+/**
+ * 
+ * @author jordi.miret
+ * 
+ */
+
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,20 +33,32 @@ public class ShopController {
 		this.shopRepository = repository;
 	}
 	
-	// createShop
+	/**
+	 * createShop
+	 * @param newShop
+	 * @return
+	 */
 	@PostMapping("/shops")
 	Shop createShop(@RequestBody Shop newShop) {
 		return shopRepository.save(newShop);
 	}
 		
-	// readerShop
+	/**
+	 * readerShop
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/shops/{id}")
 	Shop readerShop(@PathVariable Long id) {
 		return shopRepository.findById(id)
 				.orElseThrow(() -> new ShopNotFoundException(id));
 	}
 	
-	// updateShop
+	/**updateShop	 * 
+	 * @param newShop
+	 * @param id
+	 * @return
+	 */
 	@PutMapping("/shops/{id}")
 	Shop updateShop(@RequestBody Shop newShop, @PathVariable Long id) {
 
@@ -49,20 +67,22 @@ public class ShopController {
 			shop.setPicturesNumber(newShop.getPicturesNumber());
 			return shopRepository.save(shop);
 		}).orElseThrow(() -> {
-			return new ShopNotFoundException(id);
-		//}).orElseGet(() -> {
-			//newShop.setId(id);
-			//return shopRepository.save(newShop);
+			return new ShopNotFoundException(id);		
 		});
 	}
 	
-	// deleteAllShops
+	/**
+	 * deleteAllShops
+	 */	
 	@DeleteMapping("/shops")
 	void deleteAllShops() {
 		shopRepository.deleteAllInBatch();
 	}	
 	
-	// readerAllShops
+	/**
+	 * readerAllShops
+	 * @return
+	 */
 	@GetMapping("/shops")
 	List<Shop> allShops() {
 		return shopRepository.findAll();

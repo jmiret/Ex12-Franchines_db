@@ -1,5 +1,11 @@
 package com.franchines.Exceptions;
 
+/**
+ * 
+ * @author jordi.miret
+ *
+ */
+
 public class CustomException extends RuntimeException{
 	
 	/**

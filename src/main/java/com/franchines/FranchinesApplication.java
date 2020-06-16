@@ -1,5 +1,11 @@
 package com.franchines;
 
+/**
+ * 
+ * @author jordi.miret
+ * 
+ */
+
 import java.util.Collections;
 
 import org.springframework.boot.SpringApplication;

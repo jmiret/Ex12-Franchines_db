@@ -1,5 +1,11 @@
 package com.franchines.Controller;
 
+/**
+ * 
+ * @author jordi.miret
+ * 
+ */
+
 import java.util.Date;
 import java.util.List;
 
@@ -31,46 +37,69 @@ public class PictureController {
 		this.shopRepository = shopRepository;
 	}
 		
-	// readerAllPictures
+	/**
+	 * readerAllPictures	 * 
+	 * @return
+	 */	
 	@GetMapping("/pictures")
 	List<Picture> readerAllPictures() {
 		return pictureRepository.findAll();
 	}
 	
-	// createPicture
-		@PostMapping("/shops/{id}/pictures")
-		Picture createPicture(@RequestBody Picture p, @PathVariable Long id) throws Exception {
-			int nowPicturesInShop = pictureRepository.countPicturesByShop(shopRepository.findShopById(id));
-			int maxPicturesNumberInShop = shopRepository.findShopById(id).getPicturesNumber();
+	/**
+	 * createPicture	 * 
+	 * @param p
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/shops/{id}/pictures")
+	Picture createPicture(@RequestBody Picture p, @PathVariable Long id) throws Exception {
 		
-			if(nowPicturesInShop < maxPicturesNumberInShop) {
+		int nowPicturesInShop;
+		int maxPicturesNumberInShop;
 				
-				if(p.getPictureAuthor() == null) {
-					p = new Picture(p.getPictureName(), p.getPrice(), p.getShop());
-				} else {
-					p = new Picture(p.getPictureName(), p.getPictureAuthor(), p.getPrice(), p.getShop());
-				}
-				
-				p.setShop(shopRepository.findShopById(id));
-				p.setDateReg(new Date());
-				return pictureRepository.save(p);
-			} else {
-				 throw new CustomException("Exceede pictures number.");
-			}
-		}
+		nowPicturesInShop = pictureRepository.countPicturesByShop(shopRepository.findShopById(id));
+		maxPicturesNumberInShop = shopRepository.findShopById(id).getPicturesNumber();
 			
-		// readerAllPicturesInShop	
-		@GetMapping("/shops/{id}/pictures")
-		List<Picture> readerAllPicturesInShop(Shop shop, @PathVariable Long id) {
-			//shop.setName(shop.getName());
-			shop.setId(shop.getId());
-			return pictureRepository.findAllByShop(shop);
-		}
-		
-		// deleteAllPicturesInShop	
-		@DeleteMapping("/shops/{id}/pictures")
-		void deleteAllPicturesInShop(Shop shop, @PathVariable Long id) {
-			shop.setName(shop.getName());
-			pictureRepository.deleteAllPicturesInShop(shop);
-		}
+		if(nowPicturesInShop < maxPicturesNumberInShop) {
+			
+			if(p.getPictureAuthor() == null) {
+				p = new Picture(p.getPictureName(), p.getPrice(), p.getShop());
+			} else {
+				p = new Picture(p.getPictureName(), p.getPictureAuthor(), p.getPrice(), p.getShop());
+			}
+			
+			p.setShop(shopRepository.findShopById(id));
+			p.setDateReg(new Date());
+			return pictureRepository.save(p);
+		} else {
+			 throw new CustomException("Exceede pictures number.");
+		}		
+	
+	}
+			
+	/**
+	 * readerAllPicturesInShop	
+	 * @param shop
+	 * @param id
+	 * @return
+	 */		
+	@GetMapping("/shops/{id}/pictures")
+	List<Picture> readerAllPicturesInShop(Shop shop, @PathVariable Long id) {
+		shop.setId(shop.getId());
+		return pictureRepository.findAllByShop(shop);
+	}
+	
+	/**
+	 * deleteAllPicturesInShop	
+	 * @param shop
+	 * @param id
+	 */
+	@DeleteMapping("/shops/{id}/pictures")
+	void deleteAllPicturesInShop(Shop shop, @PathVariable Long id) {
+		shop.setName(shop.getName());
+		pictureRepository.deleteAllPicturesInShop(shop);
+	}
+	
 }

@@ -1,5 +1,11 @@
 package com.franchines.Model;
 
+/**
+ * 
+ * @author jordi.miret
+ * 
+ */
+
 import java.util.Date;
 
 import javax.persistence.CascadeType;

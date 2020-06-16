@@ -1,5 +1,11 @@
 package com.franchines.Domain;
 
+/**
+ *  
+ * @author jordi.miret
+ *
+ */
+
 public class Person {
 	
 	private long id;
@@ -7,6 +13,10 @@ public class Person {
 	
 	public Person() {}
 	
+	/**
+	 * 
+	 * @param name
+	 */
 	public Person(String name) {
 		super();
 		this.name = name;

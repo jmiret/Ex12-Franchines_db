@@ -1,5 +1,11 @@
 package com.franchines.Model;
 
+/**
+ * 
+ * @author jordi.miret
+ * 
+ */
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
