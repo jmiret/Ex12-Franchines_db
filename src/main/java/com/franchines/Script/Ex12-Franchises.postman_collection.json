@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "f222770c-42ed-4b4b-b566-9a297e6873cb",
+		"name": "Ex12-Franchises",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createShop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Shop_4\",\r\n    \"picturesNumber\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/shops",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops"
+					]
+				},
+				"description": "http://localhost:8081/shops"
+			},
+			"response": []
+		},
+		{
+			"name": "readerShop",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/shops/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops",
+						"2"
+					]
+				},
+				"description": "http://localhost:8081/shops/1"
+			},
+			"response": []
+		},
+		{
+			"name": "readerAllShops",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/shops",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops"
+					]
+				},
+				"description": "http://localhost:8081/shops"
+			},
+			"response": []
+		},
+		{
+			"name": "updateShop",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Shop_3\",\r\n    \"picturesNumber\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/shops/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops",
+						"5"
+					]
+				},
+				"description": "http://localhost:8081/shops/1"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAllShops",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/shops",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops"
+					]
+				},
+				"description": "http://localhost:8081/shops"
+			},
+			"response": []
+		},
+		{
+			"name": "createPicture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pictureName\": \"Family Scene\",\r\n    \"pictureAuthor\": \"José Ferraz de Almeida Júnior\",\r\n    \"price\": 3500000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/shops/1/pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops",
+						"1",
+						"pictures"
+					]
+				},
+				"description": "http://localhost:8081/shops/1/pictures"
+			},
+			"response": []
+		},
+		{
+			"name": "readerAllPicturesInShop",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/shops/1/pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops",
+						"1",
+						"pictures"
+					]
+				},
+				"description": "http://localhost:8081/shops/1/pictures"
+			},
+			"response": []
+		},
+		{
+			"name": "readerAllPictures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pictures"
+					]
+				},
+				"description": "http://localhost:8081/pictures"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAllPicturesInShop",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/shops/1/pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"shops",
+						"1",
+						"pictures"
+					]
+				},
+				"description": "http://localhost:8081/shops/1/pictures"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
